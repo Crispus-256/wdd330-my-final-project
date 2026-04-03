@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nail Trend Scout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+
+    <header class="site-header">
+      <div class="header-left" id="site-nav-panel">
+        <a class="logo" href="/index.html">
+          <img src="/images/logo-placeholder.svg" alt="Nail Trend Scout logo" />
+          <span>Nail Trend Scout</span>
+        </a>
+        <nav>
+          <a href="/index.html">Home</a>
+          <a href="#">Trends</a>
+          <a href="/product/index.html">Products</a>
+          <a href="/cart/index.html">Cart</a>
+        </nav>
+      </div>
+      <div class="header-right">
+        <div class="search-wrap">
+          <input type="search" class="header-search" placeholder="Search trends or products…" />
+          <button class="search-btn" aria-label="Search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+        </div>
+        <a href="/cart/index.html" class="cart-btn" aria-label="View cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </a>
+        <button class="menu-btn" aria-label="Toggle menu" aria-controls="site-nav-panel" aria-expanded="false" type="button">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M3 6h18"/>
+            <path d="M3 12h18"/>
+            <path d="M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-layout">
+
+      <!-- ── LEFT COLUMN ── -->
+      <div class="col-left">
+
+        <div class="video-hero">
+          <div class="video-hero__inner">
+            <div class="video-hero__play" aria-label="YouTube Trend Gallery">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="22" r="21" fill="rgba(0,0,0,0.5)" stroke="#fff" stroke-width="1.5"/>
+                <polygon points="17,13 35,22 17,31" fill="#fff"/>
+              </svg>
+            </div>
+            <p class="video-hero__label">Trend Hero Gallery — YouTube API</p>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-box"><span>Gel Nails</span></div>
+          <div class="feature-box"><span>Nail Art</span></div>
+          <div class="feature-box"><span>Top Trends</span></div>
+        </div>
+
+        <div class="mobile-pill-row" aria-hidden="true">
+          <span class="mobile-pill"></span>
+          <span class="mobile-pill"></span>
+          <span class="mobile-pill"></span>
+          <span class="mobile-pill"></span>
+        </div>
+
+        <div class="mobile-list" aria-hidden="true">
+          <article class="mobile-list-item">
+            <div class="mobile-list-item__thumb"></div>
+            <div class="mobile-list-item__bar"></div>
+          </article>
+          <article class="mobile-list-item">
+            <div class="mobile-list-item__thumb"></div>
+            <div class="mobile-list-item__bar"></div>
+          </article>
+          <article class="mobile-list-item">
+            <div class="mobile-list-item__thumb"></div>
+            <div class="mobile-list-item__bar"></div>
+          </article>
+        </div>
+
+        <div class="mobile-bottom-grid" aria-hidden="true">
+          <div class="mobile-bottom-tile"></div>
+          <div class="mobile-bottom-tile"></div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT COLUMN ── -->
+      <div class="col-right">
+
+        <div class="trend-gallery">
+          <div class="trend-tile"><span>Trending Look</span></div>
+          <div class="trend-tile"><span>Trending Look</span></div>
+          <div class="trend-tile"><span>Trending Look</span></div>
+          <div class="trend-tile"><span>Trending Look</span></div>
+        </div>
+
+        <ul class="product-grid" data-product-list></ul>
+
+      </div>
+
+    </main>
+
+    <script type="module" src="/js/main.mjs"></script>
+  </body>
+</html>

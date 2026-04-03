@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 260" role="img" aria-label="Nail Trend Scout logo">
+  <defs>
+    <linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8b3fc0"/>
+      <stop offset="1" stop-color="#55127d"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8640c2"/>
+      <stop offset="1" stop-color="#5a1a8a"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5e198"/>
+      <stop offset="1" stop-color="#c9911e"/>
+    </linearGradient>
+    <!-- Clip the iris blades to the lens circle -->
+    <clipPath id="lensClip">
+      <circle cx="200" cy="172" r="52"/>
+    </clipPath>
+  </defs>
+
+  <!-- ════════════════════════════════
+       COLOR SWATCH FAN (left side)
+       5 swatch cards fanned from pivot ~(128,200)
+  ════════════════════════════════ -->
+
+  <!-- swatch 1 — dark purple, leftmost -->
+  <g transform="rotate(-38 128 200)">
+    <rect x="62" y="100" width="46" height="78" rx="9" fill="#ffffff" />
+    <rect x="67" y="105" width="36" height="68" rx="6" fill="#4a1270"/>
+  </g>
+
+  <!-- swatch 2 -->
+  <g transform="rotate(-20 128 200)">
+    <rect x="62" y="100" width="46" height="78" rx="9" fill="#ffffff"/>
+    <rect x="67" y="105" width="36" height="68" rx="6" fill="#7b35ae"/>
+  </g>
+
+  <!-- swatch 3 — mid purple -->
+  <g transform="rotate(-2 128 200)">
+    <rect x="62" y="100" width="46" height="78" rx="9" fill="#ffffff"/>
+    <rect x="67" y="105" width="36" height="68" rx="6" fill="#a265d0"/>
+  </g>
+
+  <!-- swatch 4 — light purple/lavender -->
+  <g transform="rotate(16 128 200)">
+    <rect x="62" y="100" width="46" height="78" rx="9" fill="#ffffff"/>
+    <rect x="67" y="105" width="36" height="68" rx="6" fill="#c9a0e8"/>
+  </g>
+
+  <!-- swatch 5 — gold, rightmost -->
+  <g transform="rotate(34 128 200)">
+    <rect x="62" y="100" width="46" height="78" rx="9" fill="#ffffff"/>
+    <rect x="67" y="105" width="36" height="68" rx="6" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- ════════════════════════════════
+       NAIL POLISH BOTTLE
+       Cap: tapered trapezoid
+       Body: rounded rect with thick white border
+  ════════════════════════════════ -->
+
+  <!-- outer dark shadow ring on bottle -->
+  <rect x="148" y="102" width="106" height="148" rx="30" fill="#330a57"/>
+  <!-- bottle body -->
+  <rect x="155" y="108" width="92" height="136" rx="26" fill="url(#bodyGrad)"/>
+  <!-- inner white border inset -->
+  <rect x="162" y="115" width="78" height="122" rx="22" fill="none" stroke="#f5ece0" stroke-width="6"/>
+
+  <!-- cap neck connector -->
+  <rect x="186" y="72" width="30" height="38" rx="4" fill="#6b1fa2"/>
+  <!-- cap body — tapered trapezoid -->
+  <path d="M176 34 C176 28 184 22 200 22 C216 22 224 28 224 34 L220 72 L180 72 Z" fill="url(#capGrad)"/>
+  <!-- cap highlight stripe -->
+  <rect x="197" y="28" width="8" height="40" rx="4" fill="#f5ece0" opacity="0.85"/>
+
+  <!-- ════════════════════════════════
+       CAMERA LENS IRIS inside bottle
+  ════════════════════════════════ -->
+
+  <!-- lens white circle background -->
+  <circle cx="200" cy="172" r="52" fill="#f5ece0"/>
+
+  <!-- 6 iris blades clipped to lens circle, gold fill -->
+  <g clip-path="url(#lensClip)" fill="url(#goldGrad)">
+    <path d="M200 172 L172 120 A52 52 0 0 1 228 120 Z" transform="rotate(0   200 172)"/>
+    <path d="M200 172 L172 120 A52 52 0 0 1 228 120 Z" transform="rotate(60  200 172)"/>
+    <path d="M200 172 L172 120 A52 52 0 0 1 228 120 Z" transform="rotate(120 200 172)"/>
+    <path d="M200 172 L172 120 A52 52 0 0 1 228 120 Z" transform="rotate(180 200 172)"/>
+    <path d="M200 172 L172 120 A52 52 0 0 1 228 120 Z" transform="rotate(240 200 172)"/>
+    <path d="M200 172 L172 120 A52 52 0 0 1 228 120 Z" transform="rotate(300 200 172)"/>
+  </g>
+
+  <!-- dark lens inner ring -->
+  <circle cx="200" cy="172" r="22" fill="#4b1278"/>
+  <!-- small lens glare dot -->
+  <circle cx="210" cy="162" r="5" fill="#f5ece0" opacity="0.85"/>
+</svg>

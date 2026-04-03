@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-label="Nail product placeholder">
+  <rect width="360" height="360" fill="#efe7d8" />
+  <rect x="112" y="82" width="136" height="174" rx="34" fill="#7b35ae" />
+  <rect x="136" y="38" width="88" height="58" rx="14" fill="#5a1a8a" />
+  <circle cx="180" cy="170" r="42" fill="#f5e198" />
+  <text x="180" y="315" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="26" fill="#5a1a8a">Nail Product</text>
+</svg>

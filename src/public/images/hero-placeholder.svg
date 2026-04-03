@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-label="Trending tutorial placeholder">
+  <rect width="900" height="460" fill="#2d1b48" />
+  <rect x="24" y="24" width="852" height="412" rx="18" fill="#43286b" stroke="#e6d39a" stroke-width="4" />
+  <circle cx="450" cy="230" r="72" fill="none" stroke="#f7f3eb" stroke-width="8" />
+  <polygon points="430,194 430,266 492,230" fill="#f7f3eb" />
+  <text x="450" y="360" fill="#e6d39a" font-size="34" text-anchor="middle" font-family="Open Sans, sans-serif">Trend Hero Gallery</text>
+</svg>
