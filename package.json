@@ -1,13 +1,10 @@
 {
   "name": "wdd330-my-final-project",
   "version": "1.0.0",
-  "description": "Nail Trend Scout final project for WDD330",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,13 +13,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Crispus-256/wdd330-my-final-project/issues"
   },
-  "homepage": "https://crispus-256.github.io/wdd330-my-final-project/",
-  "devDependencies": {
-    "gh-pages": "^6.1.1",
-    "vite": "^8.0.3"
-  }
+  "homepage": "https://github.com/Crispus-256/wdd330-my-final-project#readme"
 }
