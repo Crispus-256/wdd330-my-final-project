@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Crispus-256/wdd330-my-final-project/issues"
   },
-  "homepage": "https://github.com/Crispus-256/wdd330-my-final-project#readme"
+  "homepage": "https://github.com/Crispus-256/wdd330-my-final-project#readme",
+  "devDependencies": {
+    "vite": "^8.0.4"
+  }
 }
