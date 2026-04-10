@@ -283,6 +283,38 @@ nav a[aria-current="page"] {
   text-align: center;
 }
 
+.video-hero__fallback {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-hero__fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-hero__fallback-text {
+  position: absolute;
+  left: 0.6rem;
+  right: 0.6rem;
+  bottom: 0.5rem;
+  margin: 0;
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+.video-hero__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 /* 3 feature boxes */
 .feature-row {
   display: grid;
@@ -292,11 +324,35 @@ nav a[aria-current="page"] {
 
 .feature-box {
   background: #c0c0c0;
+  border: 1px solid transparent;
   border-radius: 10px;
   height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.feature-box--thumbnail {
+  background-size: cover;
+  background-position: center;
+}
+
+.feature-box--thumbnail span {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+.feature-box:hover,
+.feature-box:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--gold-500);
+}
+
+.feature-box:not(.feature-box--thumbnail):hover,
+.feature-box:not(.feature-box--thumbnail):focus-visible {
+  background: #d4d4d4;
 }
 
 .feature-box span {
@@ -580,6 +636,73 @@ nav a[aria-current="page"] {
   }
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── LOADING STATES ────────────────────────────────────────────────────── */
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  padding: 2rem;
+}
+
+.loading-spinner::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(202, 167, 74, 0.2);
+  border-top-color: var(--gold-500);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+/* ─── EMPTY STATES ──────────────────────────────────────────────────────── */
+
+.gallery-empty,
+.cart-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+  background: rgba(202, 167, 74, 0.1);
+  border-left: 4px solid var(--gold-500);
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* ─── CART BADGE ────────────────────────────────────────────────────────── */
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 0.3rem;
+  background: var(--gold-500);
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.cart-btn {
+  position: relative;
+}
 /* ─── SECONDARY PAGE STYLES ─────────────────────────────────────────────── */
 
 .single-card { max-width: 720px; }
@@ -683,15 +806,29 @@ nav a[aria-current="page"] {
   }
 
   .page-layout {
-    width: min(160px, 88vw);
+    width: min(420px, 92vw);
     margin: 0.5rem auto 1rem;
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
 
-  .feature-row,
   .mobile-list {
     display: none;
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+  }
+
+  .feature-box {
+    height: 68px;
+    border-radius: 8px;
+  }
+
+  .feature-box span {
+    font-size: 0.72rem;
   }
 
   .col-right {
@@ -700,7 +837,25 @@ nav a[aria-current="page"] {
   }
 
   .trend-gallery {
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .trend-card {
+    padding: 0.5rem;
+  }
+
+  .trend-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .trend-card p {
+    font-size: 0.72rem;
+  }
+
+  .trend-card a {
+    font-size: 0.72rem;
   }
 
   .value-prop {
@@ -731,9 +886,7 @@ nav a[aria-current="page"] {
   }
 
   .mobile-pill-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.2rem;
+    display: none;
   }
 
   .mobile-pill {
@@ -744,8 +897,7 @@ nav a[aria-current="page"] {
   }
 
   .mobile-list {
-    display: grid;
-    gap: 0.28rem;
+    display: none;
   }
 
   .product-grid {
@@ -828,9 +980,7 @@ nav a[aria-current="page"] {
   }
 
   .mobile-bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.25rem;
+    display: none;
   }
 
   .mobile-bottom-tile {

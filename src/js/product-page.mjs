@@ -28,6 +28,7 @@ if (detailsElement) {
       if (addButton) {
         addButton.addEventListener("click", () => {
           addToCart(product);
+          window.dispatchEvent(new Event("storage"));
           addButton.textContent = "Added";
           addButton.disabled = true;
         });

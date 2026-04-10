@@ -1,12 +1,17 @@
 import { clearCart, getCartItems, removeFromCart } from "./cart-storage.mjs";
 
+// Notify other pages (like header) of cart updates
+function notifyCartUpdated() {
+  window.dispatchEvent(new Event("storage"));
+}
+
 const cartElement = document.querySelector("[data-cart-list]");
 const clearButton = document.querySelector("[data-clear-cart]");
 
 function cartItemTemplate(item) {
   return `
     <li class="cart-item" data-product-id="${item.id}">
-      <img src="${item.image_link || "/images/product-placeholder.svg"}" alt="${item.name}" loading="lazy" />
+      <img src="${item.image_link || "/images/product-placeholder.svg"}" alt="${item.name}" loading="lazy" onerror="this.src='/images/product-placeholder.svg'" />
       <div class="cart-item__content">
         <h3>${item.name || "Nail Product"}</h3>
         <p>${item.brand || "Unbranded"}</p>
@@ -24,7 +29,7 @@ function renderCart() {
   const cartItems = getCartItems();
 
   if (!cartItems.length) {
-    cartElement.innerHTML = "<p>Your cart is empty. Add products from the home page.</p>";
+    cartElement.innerHTML = "<p class='cart-empty'>Your cart is empty. Add products from the home page.</p>";
     return;
   }
 
@@ -35,6 +40,7 @@ function renderCart() {
   cartElement.querySelectorAll("[data-remove-id]").forEach((button) => {
     button.addEventListener("click", () => {
       removeFromCart(button.dataset.removeId);
+      notifyCartUpdated();
       renderCart();
     });
   });
@@ -47,6 +53,7 @@ if (cartElement) {
 if (clearButton) {
   clearButton.addEventListener("click", () => {
     clearCart();
+    notifyCartUpdated();
     renderCart();
   });
 }
