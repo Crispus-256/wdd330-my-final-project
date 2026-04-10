@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart & Quote | Nail Trend Scout</title>
+    <meta
+      name="description"
+      content="Review saved nail products and manage your trend shopping cart."
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
@@ -21,7 +25,9 @@
     <main class="layout single-card">
       <section class="panel">
         <h1>Wholesale Cart</h1>
-        <p data-cart-list></p>
+        <p class="page-note">Manage your saved products for your next look.</p>
+        <div data-cart-list></div>
+        <button type="button" class="clear-cart-btn" data-clear-cart>Clear Cart</button>
       </section>
     </main>
     <script type="module" src="/js/cart-page.mjs"></script>

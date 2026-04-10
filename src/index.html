@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nail Trend Scout</title>
+    <meta
+      name="description"
+      content="Discover nail trends and browse matching polish products in one curated experience."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,8 +26,8 @@
           <span>Nail Trend Scout</span>
         </a>
         <nav>
-          <a href="/index.html">Home</a>
-          <a href="#">Trends</a>
+          <a href="/index.html" aria-current="page">Home</a>
+          <a href="#trends">Trends</a>
           <a href="/product/index.html">Products</a>
           <a href="/cart/index.html">Cart</a>
         </nav>
@@ -54,13 +58,21 @@
     </header>
 
     <main class="page-layout">
+      <h1 class="sr-only">Nail Trend Scout Home</h1>
+
+      <p class="api-warning" data-api-warning hidden></p>
+      <p class="api-status" data-api-status hidden></p>
 
       <!-- ── LEFT COLUMN ── -->
       <div class="col-left">
 
+        <section class="value-prop" aria-label="Project summary">
+          <p data-value-prop></p>
+        </section>
+
         <div class="video-hero">
           <div class="video-hero__inner">
-            <div class="video-hero__play" aria-label="YouTube Trend Gallery">
+            <div class="video-hero__play" aria-label="Trend inspiration section">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="22" cy="22" r="21" fill="rgba(0,0,0,0.5)" stroke="#fff" stroke-width="1.5"/>
                 <polygon points="17,13 35,22 17,31" fill="#fff"/>
@@ -108,11 +120,8 @@
       <!-- ── RIGHT COLUMN ── -->
       <div class="col-right">
 
-        <div class="trend-gallery">
-          <div class="trend-tile"><span>Trending Look</span></div>
-          <div class="trend-tile"><span>Trending Look</span></div>
-          <div class="trend-tile"><span>Trending Look</span></div>
-          <div class="trend-tile"><span>Trending Look</span></div>
+        <div class="trend-gallery" id="trends" data-trend-list>
+          <p class="trend-gallery__status">Loading trend ideas...</p>
         </div>
 
         <ul class="product-grid" data-product-list></ul>

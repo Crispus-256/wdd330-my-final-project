@@ -1,5 +1,7 @@
+import { PRODUCT_API_BASE_URL } from "./constants.mjs";
+
 export default class ExternalServices {
-  constructor(baseUrl = "https://makeup-api.herokuapp.com/api/v1/products.json") {
+  constructor(baseUrl = PRODUCT_API_BASE_URL) {
     this.baseUrl = baseUrl;
   }
 
@@ -26,5 +28,16 @@ export default class ExternalServices {
     return products
       .filter((product) => product.product_type === "nail_polish")
       .slice(0, limit);
+  }
+
+  async getProductById(productId) {
+    if (!productId) {
+      return null;
+    }
+
+    const products = await this.getNailPolishProducts(200);
+    return (
+      products.find((product) => String(product.id) === String(productId)) || null
+    );
   }
 }

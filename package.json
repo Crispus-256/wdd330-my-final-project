@@ -1,12 +1,13 @@
 {
   "name": "wdd330-my-final-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "Nail Trend Scout: discover nail trends and products with vanilla JavaScript.",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "lint": "eslint \"src/js/**/*.mjs\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,9 @@
   },
   "homepage": "https://github.com/Crispus-256/wdd330-my-final-project#readme",
   "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "globals": "^15.15.0",
     "vite": "^8.0.4"
   }
 }

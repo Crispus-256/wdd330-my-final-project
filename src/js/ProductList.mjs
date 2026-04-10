@@ -4,6 +4,7 @@ export default class ProductList {
   constructor(dataSource, listElement) {
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.products = [];
   }
 
   productCardTemplate(product) {
@@ -23,39 +24,49 @@ export default class ProductList {
         }).format(rawPrice)
       : "$0.00";
 
+    const productId = product.id ?? "";
+
     return `
       <li class="product-card" data-brand="${brand.toLowerCase()}">
-        <img
-          src="${image}"
-          alt="${name}"
-          loading="lazy"
-          onerror="this.onerror=null;this.src='${fallbackImage}';"
-        />
-        <div class="product-card__content">
-          <h3>${name}</h3>
-          <p class="product-card__brand">${brand}</p>
-          <p class="product-card__price">${formattedPrice}</p>
-        </div>
+        <a class="product-card__link" href="/product/index.html?id=${productId}">
+          <img
+            src="${image}"
+            alt="${name}"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='${fallbackImage}';"
+          />
+          <div class="product-card__content">
+            <h3>${name}</h3>
+            <p class="product-card__brand">${brand}</p>
+            <p class="product-card__price">${formattedPrice}</p>
+          </div>
+        </a>
       </li>
     `;
   }
 
+  render(products = this.products) {
+    renderListWithTemplate(
+      this.productCardTemplate,
+      this.listElement,
+      products,
+      true
+    );
+  }
+
+  getProducts() {
+    return this.products;
+  }
+
   async init() {
     const products = await this.dataSource.getNailPolishProducts(10);
-    const filteredProducts = products.filter(
+    this.products = products.filter(
       (product) =>
         product.product_type === "nail_polish" &&
         product.name &&
         (product.price || product.price === "0")
     );
 
-    console.log("Makeup API nail products:", filteredProducts);
-
-    renderListWithTemplate(
-      this.productCardTemplate,
-      this.listElement,
-      filteredProducts,
-      true
-    );
+    this.render(this.products);
   }
 }
