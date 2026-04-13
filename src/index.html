@@ -34,7 +34,13 @@
       </div>
       <div class="header-right">
         <div class="search-wrap">
-          <input type="search" class="header-search" placeholder="Search trends or products…" />
+          <label for="site-search" class="sr-only">Search products by name or brand</label>
+          <input
+            id="site-search"
+            type="search"
+            class="header-search"
+            placeholder="Search products by name or brand"
+          />
           <button class="search-btn" aria-label="Search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
               <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
@@ -61,8 +67,9 @@
     <main class="page-layout">
       <h1 class="sr-only">Nail Trend Scout Home</h1>
 
-      <p class="api-warning" data-api-warning hidden></p>
-      <p class="api-status" data-api-status hidden></p>
+      <p class="api-warning" data-api-warning aria-live="polite" hidden></p>
+      <p class="api-status" data-api-status aria-live="polite" hidden></p>
+      <p class="search-status" data-search-status aria-live="polite" hidden></p>
 
       <!-- ── LEFT COLUMN ── -->
       <div class="col-left">
@@ -121,7 +128,7 @@
       <!-- ── RIGHT COLUMN ── -->
       <div class="col-right">
 
-        <div class="trend-gallery" id="trends" data-trend-list>
+        <div class="trend-gallery" id="trends" data-trend-list aria-live="polite">
           <p class="trend-gallery__status">Loading trend ideas...</p>
         </div>
 
@@ -130,6 +137,15 @@
       </div>
 
     </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Nail Trend Scout</p>
+      <nav aria-label="Footer navigation">
+        <a href="/index.html">Home</a>
+        <a href="/product/index.html">Product</a>
+        <a href="/cart/index.html">Cart</a>
+      </nav>
+    </footer>
 
     <script type="module" src="/js/main.mjs"></script>
   </body>

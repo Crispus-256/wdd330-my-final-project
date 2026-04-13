@@ -30,3 +30,21 @@ export function getLocalStorage(key) {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : null;
 }
+
+export function normalizeExternalImageUrl(url, fallback = "") {
+  const trimmed = (url || "").trim();
+
+  if (!trimmed) {
+    return fallback;
+  }
+
+  if (trimmed.startsWith("//")) {
+    return `https:${trimmed}`;
+  }
+
+  if (trimmed.startsWith("http://")) {
+    return `https://${trimmed.slice("http://".length)}`;
+  }
+
+  return trimmed;
+}

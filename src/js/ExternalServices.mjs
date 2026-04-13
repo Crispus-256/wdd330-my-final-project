@@ -23,11 +23,14 @@ export default class ExternalServices {
   }
 
   async getNailPolishProducts(limit = 10) {
+    const products = await this.getAllNailPolishProducts();
+    return products.slice(0, limit);
+  }
+
+  async getAllNailPolishProducts() {
     const products = await this.getData("?product_type=nail_polish");
 
-    return products
-      .filter((product) => product.product_type === "nail_polish")
-      .slice(0, limit);
+    return products.filter((product) => product.product_type === "nail_polish");
   }
 
   async getProductById(productId) {

@@ -1,4 +1,5 @@
 import { clearCart, getCartItems, removeFromCart } from "./cart-storage.mjs";
+import { normalizeExternalImageUrl } from "./utils.mjs";
 
 // Notify other pages (like header) of cart updates
 function notifyCartUpdated() {
@@ -9,11 +10,17 @@ const cartElement = document.querySelector("[data-cart-list]");
 const clearButton = document.querySelector("[data-clear-cart]");
 
 function cartItemTemplate(item) {
+  const name = (item.name || "Nail Product").trim();
+  const image =
+    normalizeExternalImageUrl(item.api_featured_image) ||
+    normalizeExternalImageUrl(item.image_link) ||
+    "/images/product-placeholder.svg";
+
   return `
     <li class="cart-item" data-product-id="${item.id}">
-      <img src="${item.image_link || "/images/product-placeholder.svg"}" alt="${item.name}" loading="lazy" onerror="this.src='/images/product-placeholder.svg'" />
+      <img src="${image}" alt="${name}" loading="lazy" onerror="this.onerror=null;this.src='/images/product-placeholder.svg'" />
       <div class="cart-item__content">
-        <h3>${item.name || "Nail Product"}</h3>
+        <h3>${name}</h3>
         <p>${item.brand || "Unbranded"}</p>
       </div>
       <button type="button" class="cart-item__remove" data-remove-id="${item.id}">Remove</button>

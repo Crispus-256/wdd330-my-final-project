@@ -1,5 +1,12 @@
+import { normalizeExternalImageUrl } from "./utils.mjs";
+
 export function productDetailsTemplate(product) {
   const fallbackImage = "/images/product-placeholder.svg";
+  const image =
+    normalizeExternalImageUrl(product.api_featured_image) ||
+    normalizeExternalImageUrl(product.image_link) ||
+    fallbackImage;
+  const name = (product.name || "Nail Product").trim();
   const rawPrice = Number.parseFloat(product.price);
   const price = Number.isFinite(rawPrice)
     ? new Intl.NumberFormat("en-US", {
@@ -14,9 +21,9 @@ export function productDetailsTemplate(product) {
 
   return `
     <article class="product-details" data-product-id="${product.id}">
-      <img src="${product.image_link || fallbackImage}" alt="${product.name}" />
+      <img src="${image}" alt="${name}" onerror="this.onerror=null;this.src='${fallbackImage}';" />
       <div class="product-details__content">
-        <h2>${product.name || "Nail Product"}</h2>
+        <h2>${name}</h2>
         <p><strong>Brand:</strong> ${product.brand || "Unbranded"}</p>
         <p><strong>Price:</strong> ${price}</p>
         <p>${description}</p>

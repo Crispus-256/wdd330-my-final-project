@@ -1,19 +1,28 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { normalizeExternalImageUrl, renderListWithTemplate } from "./utils.mjs";
+import { filterProductsByTerm } from "./search-filter.mjs";
 
 export default class ProductList {
   constructor(dataSource, listElement) {
     this.dataSource = dataSource;
     this.listElement = listElement;
     this.products = [];
+    this.initialProducts = [];
+    this.allProducts = [];
+  }
+
+  isRenderableProduct(product) {
+    return Boolean(
+      product?.product_type === "nail_polish" &&
+        product?.name &&
+        (product?.price || product?.price === "0")
+    );
   }
 
   productCardTemplate(product) {
     const fallbackImage = "/images/product-placeholder.svg";
-    const rawFeaturedImage = (product.api_featured_image || "").trim();
-    const featuredImage = rawFeaturedImage.startsWith("//")
-      ? `https:${rawFeaturedImage}`
-      : rawFeaturedImage;
-    const image = featuredImage || product.image_link || fallbackImage;
+    const featuredImage = normalizeExternalImageUrl(product.api_featured_image);
+    const imageLink = normalizeExternalImageUrl(product.image_link);
+    const image = featuredImage || imageLink || fallbackImage;
     const name = (product.name || "Nail Product").trim();
     const brand = (product.brand || "Unbranded").trim();
     const rawPrice = Number.parseFloat(product.price);
@@ -58,14 +67,29 @@ export default class ProductList {
     return this.products;
   }
 
+  hasFullCatalogLoaded() {
+    return this.allProducts.length > 0;
+  }
+
+  async searchProducts(term = "") {
+    const normalizedTerm = term.trim();
+
+    if (!normalizedTerm) {
+      return this.initialProducts;
+    }
+
+    if (!this.allProducts.length) {
+      const products = await this.dataSource.getAllNailPolishProducts();
+      this.allProducts = products.filter((product) => this.isRenderableProduct(product));
+    }
+
+    return filterProductsByTerm(this.allProducts, normalizedTerm);
+  }
+
   async init() {
     const products = await this.dataSource.getNailPolishProducts(10);
-    this.products = products.filter(
-      (product) =>
-        product.product_type === "nail_polish" &&
-        product.name &&
-        (product.price || product.price === "0")
-    );
+    this.initialProducts = products.filter((product) => this.isRenderableProduct(product));
+    this.products = this.initialProducts;
 
     this.render(this.products);
   }

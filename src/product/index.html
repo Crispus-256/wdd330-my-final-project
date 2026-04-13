@@ -14,11 +14,12 @@
     />
     <link rel="stylesheet" href="/styles/site.css" />
   </head>
-  <body>
+  <body class="secondary-page">
     <header class="site-header compact">
       <a class="logo" href="/index.html">Nail Trend Scout</a>
       <nav>
         <a href="/index.html">Home</a>
+        <a href="/product/index.html" aria-current="page">Product</a>
         <a href="/cart/index.html">Cart</a>
       </nav>
     </header>
@@ -29,6 +30,14 @@
         <div data-product-details></div>
       </section>
     </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 Nail Trend Scout</p>
+      <nav aria-label="Footer navigation">
+        <a href="/index.html">Home</a>
+        <a href="/product/index.html" aria-current="page">Product</a>
+        <a href="/cart/index.html">Cart</a>
+      </nav>
+    </footer>
     <script type="module" src="/js/product-page.mjs"></script>
   </body>
 </html>

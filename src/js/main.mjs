@@ -2,7 +2,6 @@ import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import TrendServices from "./TrendServices.mjs";
 import { DEFAULT_TREND_QUERY, VALUE_PROPOSITION } from "./constants.mjs";
-import { filterProductsByTerm } from "./search-filter.mjs";
 import { getCartItems } from "./cart-storage.mjs";
 
 const dataSource = new ExternalServices();
@@ -16,6 +15,7 @@ const featureTrendButtons = document.querySelectorAll("[data-trend-query]");
 const valuePropElement = document.querySelector("[data-value-prop]");
 const apiWarningElement = document.querySelector("[data-api-warning]");
 const apiStatusElement = document.querySelector("[data-api-status]");
+const searchStatusElement = document.querySelector("[data-search-status]");
 const cartBadge = document.querySelector(".cart-badge");
 const hasYoutubeKey = Boolean(import.meta.env.VITE_YOUTUBE_API_KEY);
 const trendFallbackImage = "/images/hero-placeholder.svg";
@@ -193,22 +193,41 @@ async function initFeatureTrendCards() {
 
 if (productListElement) {
   const productList = new ProductList(dataSource, productListElement);
+  let searchRequestId = 0;
   
   // Show loading state while fetching
-  productListElement.innerHTML = '<div class="loading-spinner" aria-label="Loading products"></div>';
+  productListElement.innerHTML = '<li class="loading-spinner" aria-label="Loading products"></li>';
   
   productList.init();
 
-  const runSearch = () => {
+  const runSearch = async () => {
     if (!searchInput) {
       return;
     }
 
-    const filteredProducts = filterProductsByTerm(
-      productList.getProducts(),
-      searchInput.value
-    );
-    productList.render(filteredProducts);
+    const term = searchInput.value.trim();
+    const requestId = ++searchRequestId;
+
+    if (searchStatusElement) {
+      if (term && !productList.hasFullCatalogLoaded()) {
+        searchStatusElement.hidden = false;
+        searchStatusElement.textContent = "Searching all products...";
+      } else {
+        searchStatusElement.hidden = true;
+      }
+    }
+
+    const results = await productList.searchProducts(term);
+
+    if (requestId !== searchRequestId) {
+      return;
+    }
+
+    productList.render(results);
+
+    if (searchStatusElement) {
+      searchStatusElement.hidden = true;
+    }
   };
 
   if (searchButton) {

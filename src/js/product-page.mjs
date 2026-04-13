@@ -9,7 +9,7 @@ const productService = new ExternalServices();
 
 function renderMessage(message) {
   if (detailsElement) {
-    detailsElement.innerHTML = `<p>${message}</p>`;
+    detailsElement.innerHTML = `<p class="gallery-empty" role="status">${message}</p>`;
   }
 }
 

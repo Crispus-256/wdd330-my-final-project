@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart & Quote | Nail Trend Scout</title>
+    <title>Cart | Nail Trend Scout</title>
     <meta
       name="description"
       content="Review saved nail products and manage your trend shopping cart."
@@ -14,12 +14,13 @@
     />
     <link rel="stylesheet" href="/styles/site.css" />
   </head>
-  <body>
+  <body class="secondary-page">
     <header class="site-header compact">
       <a class="logo" href="/index.html">Nail Trend Scout</a>
       <nav>
         <a href="/index.html">Home</a>
         <a href="/product/index.html">Product</a>
+        <a href="/cart/index.html" aria-current="page">Cart</a>
       </nav>
     </header>
     <main class="layout single-card">
@@ -30,6 +31,14 @@
         <button type="button" class="clear-cart-btn" data-clear-cart>Clear Cart</button>
       </section>
     </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 Nail Trend Scout</p>
+      <nav aria-label="Footer navigation">
+        <a href="/index.html">Home</a>
+        <a href="/product/index.html">Product</a>
+        <a href="/cart/index.html" aria-current="page">Cart</a>
+      </nav>
+    </footer>
     <script type="module" src="/js/cart-page.mjs"></script>
   </body>
 </html>
